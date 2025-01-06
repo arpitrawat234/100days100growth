@@ -6,6 +6,4 @@ I could also use this blog for my notes and stuff also.
 
 [Day1](#Day1)
 
----
-
-## Day:1
+# Day1
