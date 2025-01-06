@@ -4,7 +4,7 @@ Hello Everyone, this is my little diary for my 100 days 100 challenge by buildin
 
 I could also use this blog for my notes and stuff also.
 
-[Day1](##DAY1)
+[Day1](#DAY1)
 
 ---
 
