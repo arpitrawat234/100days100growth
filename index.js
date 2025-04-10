@@ -1,124 +1,118 @@
-console.log('Hello, Node.js!')
-
-
-  
 const express = require('express')
+
+const morgan = require('morgan');
+const cors = require('cors')
+
+
+
+app.use(express.static('dist'))
+
 
 const app = express();
 app.use(express.json())
-let notes = [
-    {
-      id: "1",
-      content: "HTML is easy",
-      important: true
+app.use(cors())
+
+
+morgan.token('person-data', function (req) {
+  return req.method === 'POST' ? JSON.stringify(req.body) : '';
+});
+
+
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :person-data'));
+
+
+
+app.use(morgan('type'));
+
+let phone=
+[
+    { 
+      "id": "1",
+      "name": "Arto Hellas", 
+      "number": "040-123456"
     },
-    {
-      id: "2",
-      content: "Browser can execute only JavaScript",
-      important: false
+    { 
+      "id": "2",
+      "name": "Ada Lovelace", 
+      "number": "39-44-5323523"
     },
-    {
-      id: "3",
-      content: "GET and POST are the most important methods of HTTP protocol",
-      important: true
+    { 
+      "id": "3",
+      "name": "Dan Abramov", 
+      "number": "12-43-234345"
+    },
+    { 
+      "id": "4",
+      "name": "Mary Poppendieck", 
+      "number": "39-23-6423122"
     }
-  ]
+]
+
+let length=phone.length;
+let current=new Date();
+
+app.get('/api/persons', (req, res) => {
+  res.json(phone)})
 
 
-  app.delete('/api/notes/:id', (request, response) => {
-    const id = request.params.id
-    notes = notes.filter(note => note.id !== id)
-  
-    response.status(204).end()
-  })
-  // app.post('/api/notes', (request, response) => {
-  //   const note = request.body
-  //   console.log(note)
-  //   response.json(note)
-  // })
+app.get('/api/info', (req, res) => {
+    res.end(`<p>Phonebook has info for ${length} people</p>
+     <p>${current}</p>`)})
 
 
 
-  // app.post('/api/notes', (request, response) => {
-  //   const maxId = notes.length > 0
-  //     ? Math.max(...notes.map(n => Number(n.id))) 
-  //     : 0
-  
-  //   const note = request.body
-  //   note.id = String(maxId + 1)
-  
-  //   notes = notes.concat(note)
-  
-  //   response.json(note)
-  // })
+app.get('/api/persons/:id', (req, res) => {
+       
+const id=req.params.id;
 
-  const generateId = () => {
-    const maxId = notes.length > 0
-      ? Math.max(...notes.map(n => Number(n.id)))
-      : 0
-    return String(maxId + 1)
-  }
+const person=phone.find(p=>p.id===id);
+
+if(person){
+    res.json(person)}
+    else{
+    res.status(404).json({error: 'person not found'})}
+})
+      
+
+app.delete('/api/persons/:id', (req, res) => {
+    const id = (req.params.id);
+    phone = phone.filter(p => p.id !== id);
   
-  app.post('/api/notes', (request, response) => {
-    const body = request.body
+    res.status(204).end();
+  });
+    
+
+  // Generate random ID
+
+  app.post('/api/persons', (req, res) => {
+    const body = req.body;
   
-    if (!body.content) {
-      return response.status(400).json({ 
-        error: 'content missing' 
-      })
+    console.log(JSON.stringify(req.body))
+    // Error handling for missing fields
+    if (!body.name || !body.number) {
+      return res.status(400).json({ error: 'name or number is missing' });
     }
   
-    const note = {
-      content: body.content,
-      important: body.important || false,
-      id: generateId(),
+    // Error handling for duplicate names
+    const nameExists = phone.some(p => p.name === body.name);
+    if (nameExists) {
+      return res.status(400).json({ error: 'name must be unique' });
     }
   
-    notes = notes.concat(note)
+    // Generate random ID
+    const newPerson = {
+      id: Math.floor(Math.random() * 1000000),
+      name: body.name,
+      number: body.number
+    };
   
-    response.json(note)
-  })
-
-
-  app.get('/api/notes/:id', (request, response) => {
-    const id = request.params.id
-    const note = notes.find(note => note.id === id)
-    response.json(note)
-
-    if (notes) {
-      response.json(notes)
-    } else {
-      response.status(404).end()
-    }
-  })
-
-  app.get('/api/notes', (request, response) => {
-    response.json(notes)
-
-    if (notes) {
-      response.json(notes)
-    } else {
-      response.status(404).end()
-    }
-  })
-
-  const PORT = 3001
-
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-  })
-  
-  
-
-
-// This Node.js script creates an HTTP server using the http module. It listens on port 3001, responding with "Hello World" to all requests. The createServer function handles incoming connections, sending a 200 status and text/plain content type. The listen method starts the server, logging a confirmation message. 🚀
-
-// const PORT = 3001
-// app.listen(PORT)
-
-// console.log(`Server running on port ${PORT}`)
+    phone.push(newPerson);
+    res.json(newPerson);
+  });
 
 
 
+const port=process.env.PORT|| 3022
 
-//! we can define route parmater using the : this
+app.listen(port, (req, res) => 
+console.log(`listening on port ${port}`))
