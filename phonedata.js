@@ -3,14 +3,14 @@ const express = require('express')
 const morgan = require('morgan');
 const cors = require('cors')
 
-app.use(cors())
+
 
  
 
 
 const app = express();
 app.use(express.json())
-
+app.use(cors())
 
 
 morgan.token('person-data', function (req) {
@@ -112,7 +112,7 @@ app.delete('/api/persons/:id', (req, res) => {
 
 
 
-const port=process.env.PORT || 3022
+const port=process.env.PORT|| 3022
 
 app.listen(port, (req, res) => 
 console.log(`listening on port ${port}`))
