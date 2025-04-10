@@ -74,9 +74,9 @@ if(person){
       
 
 app.delete('/api/persons/:id', (req, res) => {
-    const id = (req.params.id);
+    const id = Number(req.params.id);
     phone = phone.filter(p => p.id !== id);
-  
+  console.log(JSON.stringify(phone));
     res.status(204).end();
   });
     
