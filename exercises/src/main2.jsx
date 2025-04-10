@@ -9,6 +9,6 @@
 
 
 import ReactDOM from "react-dom/client";
-import Appa from "./Appa";
+import Appa from "./Appa.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Appa />);
