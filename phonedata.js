@@ -112,7 +112,7 @@ app.delete('/api/persons/:id', (req, res) => {
 
 
 
-const port=ProcessingInstruction.env.PORT || 3022
+const port=process.env.PORT || 3022
 
 app.listen(port, (req, res) => 
 console.log(`listening on port ${port}`))

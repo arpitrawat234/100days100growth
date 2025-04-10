@@ -3,7 +3,7 @@ import Notes from './componenets/names'
 
 
 import { useState, useEffect } from 'react'
-// import axios from 'axios';
+
 import services from './componenets/services'
 
 
