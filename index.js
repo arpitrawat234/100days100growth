@@ -74,7 +74,7 @@ if(person){
       
 
 app.delete('/api/persons/:id', (req, res) => {
-    const id = Number(req.params.id);
+    const id = (req.params.id).toString();
     phone = phone.filter(p => p.id !== id);
   console.log(JSON.stringify(phone));
     res.status(204).end();
@@ -100,7 +100,7 @@ app.delete('/api/persons/:id', (req, res) => {
   
     // Generate random ID
     const newPerson = {
-      id: Math.floor(Math.random() * 1000000),
+      id:(crypto.randomUUID()).toString(),
       name: body.name,
       number: body.number
     };
