@@ -1,0 +1,47 @@
+
+@import "tailwindcss";
+
+@tailwind utilities;
+
+/* Custom styles */
+body {
+  @apply bg-gradient-to-b from-indigo-900 to-black text-white;
+}
+
+textarea {
+  @apply w-80 p-3 text-black border rounded-lg shadow-md focus:ring-2 focus:ring-indigo-400 focus:outline-none resize-none h-24;
+}
+
+button {
+  @apply px-4 py-2 mt-2 text-lg font-semibold text-white bg-indigo-600 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300;
+}
+ .neon-glow {
+  text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2;
+}
+
+/* ::placeholder {
+  color: #8a2be2;
+  text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2;
+}  */
+/* .placeholder-neon::placeholder {
+  color: #8a2be2; /* Neon purple */
+  /* text-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2;
+  opacity: 1;
+ */ 
+/* Neon glow only for placeholder */
+.placeholder-neon::placeholder {
+  color: #9400ff; /* Bright neon purple */
+  text-shadow: 
+    0 0 8px #9400ff, 
+    0 0 16px #9400ff, 
+    0 0 32px #9400ff;
+  opacity: 1;
+}
+
+/* When user types, text should be plain white */
+.placeholder-neon {
+  color: white; /* Ensures input text has no glow */
+  text-shadow: none;
+}
+
+

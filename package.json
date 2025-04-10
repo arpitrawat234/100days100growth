@@ -1,0 +1,18 @@
+{
+  "name": "100days100growth",
+  "version": "1.0.0",
+  "description": "Hello Everyone, this is my little diary for my 100 days 100 challenge by building 100 mini projects or some small projects that join together to make a bigger projects .It would help me keep track of time and skills i am learning . To help me grow🌱.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hoja": "node --watch index.js"
+  },
+  "author": "Arpit Rawat",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  }
+}

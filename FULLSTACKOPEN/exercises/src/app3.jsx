@@ -218,8 +218,4 @@ const History = (props) => {
   )
 }
 
-
-
-
-
   export default App3

@@ -1,0 +1,13 @@
+POST http://localhost:3022/api/persons
+Content-Type: application/json
+
+{
+    # "name":"noothings",
+    # "email":"noothings"
+    # ,
+    # "password":"noothings",
+
+    # "content":"noothings" 
+
+
+}

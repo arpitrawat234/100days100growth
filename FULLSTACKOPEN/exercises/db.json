@@ -1,0 +1,28 @@
+{
+  "persons": [
+    {
+      "id": "1e6874a2-8443-4cf9-b8f0-bed47ed84392",
+      "name": "sdefef",
+      "important": false,
+      "number": "123456"
+    },
+    {
+      "id": "ba88c3c7-145e-4050-b8de-210c4bb5c1c9",
+      "name": "4434",
+      "important": true,
+      "number": "4343"
+    },
+    {
+      "id": "a6c9742c-16c2-4ec9-ab6e-a428a52ae990",
+      "name": "34343",
+      "important": true,
+      "number": "343"
+    },
+    {
+      "name": "3434",
+      "important": true,
+      "id": "b56c9c43-4812-4810-a366-9a1c634fdd23",
+      "number": "434343"
+    }
+  ]
+}

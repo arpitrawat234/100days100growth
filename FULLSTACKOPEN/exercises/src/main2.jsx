@@ -1,13 +1,14 @@
 
+// import axios from 'axios'
 
-import ReactDOM from 'react-dom/client'
+// const promise = axios.get('http://localhost:3001/notes')
+// console.log(promise)
 
-import App3 from './app3'
+// const promise2 = axios.get('http://localhost:3001/foobar')
+// console.log(promise2)
 
-ReactDOM.createRoot(document.getElementById('root')).render(
- <>
 
-  <App3/>
+import ReactDOM from "react-dom/client";
+import Appa from "./Appa";
 
-</>
-)
+ReactDOM.createRoot(document.getElementById("root")).render(<Appa />);
